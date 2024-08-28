@@ -6,12 +6,37 @@
     const hanldeClick = () => {
         beltColor = "green";
     };
+
+    // const handleInput = (event) => {
+    //     beltColor = event.target.value;
+    // };
 </script>
 
 <main>
     <h1>Hello {name}!</h1>
     <p>{beltColor} belt level ?</p>
-    <button on:click={hanldeClick}>Update belt color</button>
+    <div class="select-color-container">
+        <!-- <input
+        type="text"
+        name="chooseBeltColor"
+        id="chooseBeltColor"
+        value={beltColor}
+        on:input={handleInput}
+        /> -->
+        <!-- Shorter way to create tow way data binding -->
+        <input
+            type="text"
+            name="chooseBeltColor"
+            id="chooseBeltColor"
+            bind:value={beltColor}
+        />
+        <button
+            on:click={hanldeClick}
+            style="background: {beltColor};"
+        >
+            Update belt color
+        </button>
+    </div>
 </main>
 
 <style>
@@ -33,5 +58,19 @@
         main {
             max-width: none;
         }
+    }
+
+    .select-color-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    button {
+        color: #fff;
+        border: none;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
     }
 </style>
