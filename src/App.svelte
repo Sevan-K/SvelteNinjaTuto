@@ -1,41 +1,22 @@
 <script>
-    export let name;
+    // export let name;
+    let firstName = "Jimi";
+    let lastName = "Hendrix";
     let beltColor = "black";
 
-    // handle to change color
-    const hanldeClick = () => {
-        beltColor = "green";
-    };
+    // ractive value
+    $: fullName = `${firstName} ${lastName}`;
 
-    // const handleInput = (event) => {
-    //     beltColor = event.target.value;
-    // };
+    // reactive statement
+    $: console.log(beltColor);
 </script>
 
 <main>
-    <h1>Hello {name}!</h1>
-    <p>{beltColor} belt level ?</p>
-    <div class="select-color-container">
-        <!-- <input
-        type="text"
-        name="chooseBeltColor"
-        id="chooseBeltColor"
-        value={beltColor}
-        on:input={handleInput}
-        /> -->
-        <!-- Shorter way to create tow way data binding -->
-        <input
-            type="text"
-            name="chooseBeltColor"
-            id="chooseBeltColor"
-            bind:value={beltColor}
-        />
-        <button
-            on:click={hanldeClick}
-            style="background: {beltColor};"
-        >
-            Update belt color
-        </button>
+    <p style="color: {beltColor};">{fullName} - {beltColor}</p>
+    <div class="input-container">
+        <input type="text" bind:value={firstName} />
+        <input type="text" bind:value={lastName} />
+        <input type="text" bind:value={beltColor} />
     </div>
 </main>
 
@@ -60,17 +41,9 @@
         }
     }
 
-    .select-color-container {
+    .input-container {
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
-    }
-
-    button {
-        color: #fff;
-        border: none;
-        border-radius: 0.5rem;
-        padding: 0.5rem;
     }
 </style>
